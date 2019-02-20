@@ -1,0 +1,19 @@
+<div class="container pt-4">
+  <h1>Add a Review for <%= @restaurant.name %></h1>
+  <%= simple_form_for [@restaurant, @review] do |f| %>
+
+    <% if @review.errors.any? %>
+        <div class="errors-container">
+          <ul>
+            <% @review.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+    <%= f.input :content, label: 'Add some Content' %>
+    <%= f.input :rating, label: 'What is your rating?' %>
+    <%= f.button :submit, class: 'btn btn-primary' %>
+  <% end %>
+</div>

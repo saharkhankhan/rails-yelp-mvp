@@ -1,6 +1,24 @@
-<div class="container">
+<div class="container bg-white pb-4 pt-4 mt-4">
   <h1><%= @restaurant.name %></h1>
+  <h3>Adress</h3>
   <p><%= @restaurant.address %></p>
+  <h3>Phone Number</h3>
   <p><%= @restaurant.phone_number %></p>
+  <h3>Categort</h3>
   <p><%= @restaurant.category %></p>
+  <h3>Reviews</h3>
+  <% @restaurant.reviews.each do |review| %>
+    <div class="border-top pt-1">
+      <p><strong>Cutomer Rating:</strong> <%= "#{review.rating}/5" %></p>
+      <p><strong>Comments: </strong><%= review.content %></p>
+    </div>
+  <% end %>
+
+  <div class="mt-4">
+    <%= link_to "Add Review", new_restaurant_review_path(@restaurant), class: "btn btn-primary" %>
+  </div>
+
+  <div class="mt-4">
+    <%= link_to "Back to Restaurants", restaurants_path, class: "btn btn-primary" %>
+  </div>
 </div>
